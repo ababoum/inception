@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+
+  web:
+    image:
+    ports: 433:433/tcp
+
+  database:
+    image:
