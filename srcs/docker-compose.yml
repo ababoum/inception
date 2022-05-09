@@ -2,9 +2,31 @@ version: '3'
 
 services:
 
-  web:
-    image:
-    ports: 433:433/tcp
+  nginx:
+    build: requirements/nginx/
+    container_name: nginx
+    ports:
+      - "443:443"
+    networks:
+      - inception_network
+  
 
-  database:
-    image:
+  # wordpress:
+  #   build: requirements/wordpress/
+  #   container_name: wordpress
+  #   ports:
+  #     - "9000:9000"
+  #   networks:
+  #     - inception_network
+
+
+  # mariadb:
+  #   build: requirements/mariadb/
+  #   container_name: mariadb
+  #   ports:
+  #     - "3306:3306"
+  #   networks:
+  #     - inception_network
+
+networks:
+  inception_network:

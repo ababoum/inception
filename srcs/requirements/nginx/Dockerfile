@@ -1,4 +1,4 @@
-FROM	debian:buster
+FROM	alpine
 
 RUN		apt-get update
 
@@ -10,3 +10,5 @@ USER	mababou:sudo
 USER	test_user
 
 CMD		["echo", "Hello"]
+
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
