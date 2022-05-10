@@ -22,6 +22,9 @@ docker run -td DockerImage -v VolumeName:/var/docker_name -p 8080:8080
 				# to save changes from a docker to a new one.
 				# the -p flag maps ports (local port:docker port)
 
+docker exec -it <container name> /bin/bash 
+    # to get a bash shell in the container
+
 
 ==== DOCKER COMPOSE ====
 
@@ -33,3 +36,10 @@ docker-compose down # stop all dockers
 
 docker build -t ImageName:Tag "PATH OF THE DIRECTORY WITH THE DOCKERFILE" 
 				# build a docker image from a docker file
+
+==== MARIADB ====
+
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadb 
+  # retrieve the db IP address
+mysql -u database_username -p -h 10.24.96.6
+  # connect to mariadb from the outside

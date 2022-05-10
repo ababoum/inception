@@ -36,6 +36,8 @@ services:
     networks:
       - inception_network
     restart: always
+    env_file:
+      - ./.env
     environment:
       MYSQL_ROOT_PWD:   ${MYSQL_ROOT_PWD}
       WP_DATABASE_NAME: ${WP_DATABASE_NAME}
