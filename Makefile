@@ -22,5 +22,6 @@ reload:
 
 fclean:
 	rm -rf /home/mababou/data/wp/
+	rm -rf /home/mababou/data/db/
 
 .PHONY: linux stop clean prune reload all fclean
