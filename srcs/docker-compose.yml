@@ -6,9 +6,15 @@ services:
     build: requirements/nginx/
     container_name: nginx
     ports:
+      # - "80:80"
       - "443:443"
+    volumes:
+      - "~/Desktop/inception/run/website:/var/www/html"
+    # depends_on:
+    #   - wordpress
     networks:
       - inception_network
+    restart: always
   
 
   # wordpress:

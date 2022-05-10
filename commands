@@ -9,13 +9,15 @@ docker stop
 docker pause
 docker unpause
 
+docker system prune -f # delete all dockers
+
 docker attach # re-enters a running docker
 
 docker rm # deletes a docker
 docker rmi # deletes a docker image
 
 docker volume create # create new unit of storage for new containers to plug into
-docker run -it DockerImage -v VolumeName:/var/docker_name -p 8080:8080
+docker run -td DockerImage -v VolumeName:/var/docker_name -p 8080:8080
 				# the -v flag maps docker storage to a 'local' storage, allowing
 				# to save changes from a docker to a new one.
 				# the -p flag maps ports (local port:docker port)
