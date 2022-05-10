@@ -1,14 +1,9 @@
 FROM	alpine
 
+# install nginx shell cmd and openssl
 RUN		apk update && apk upgrade && apk add --no-cache nginx openssl
 
-# EXPOSE	433/tcp
-# VOLUME	/home/login/data/
-# USER	mababou:sudo
-# USER	test_user
-
-
-# nginx SSL
+# nginx SSL setup
 RUN mkdir /etc/nginx/ssl
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
         -out /etc/nginx/ssl/mababou.pem \
