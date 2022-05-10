@@ -17,7 +17,7 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
 
 
 # nginx config
-RUN mkdir -p /run/nginx
-COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+RUN mkdir -p /var/www/html
+COPY conf/nginx.conf /etc/nginx/http.d/default.conf
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
