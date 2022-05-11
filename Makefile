@@ -18,7 +18,7 @@ prune: clean
 reload:
 	mkdir -p "/home/mababou/data/wp"
 	mkdir -p "/home/mababou/data/db"
-	docker-compose --env-file srcs/.env -f srcs/docker-compose.yml up -d --build
+	docker-compose --env-file srcs/.env -f srcs/docker-compose.yml up --build
 
 fclean:
 	rm -rf /home/mababou/data/wp/

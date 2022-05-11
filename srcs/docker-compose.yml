@@ -2,18 +2,18 @@ version: '3'
 
 services:
 
-  nginx:
-    build: requirements/nginx/
-    container_name: nginx
-    ports:
-      - "443:443"
-    volumes:
-      - website:/var/www/html
-    # depends_on:
-    #   - wordpress
-    networks:
-      - inception_network
-    restart: always
+  # nginx:
+  #   build: requirements/nginx/
+  #   container_name: nginx
+  #   ports:
+  #     - "443:443"
+  #   volumes:
+  #     - website:/var/www/html
+  #   # depends_on:
+  #   #   - wordpress
+  #   networks:
+  #     - inception_network
+  #   restart: always
     
 
   # wordpress:
@@ -35,20 +35,22 @@ services:
       - "database:/var/lib/mysql"
     networks:
       - inception_network
-    restart: always
+    restart: unless-stopped
     env_file:
       - ./.env
     environment:
-      MYSQL_ROOT_PWD:   ${MYSQL_ROOT_PWD}
-      WP_DATABASE_NAME: ${WP_DATABASE_NAME}
-      WP_DATABASE_USR:  ${WP_DATABASE_USR}
-      WP_DATABASE_PWD:  ${WP_DATABASE_PWD}
+      MYSQL_ROOT_PASSWORD:  ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE:       ${WP_DATABASE_NAME}
+      MYSQL_USER:           ${WP_DATABASE_USR}
+      MYSQL_PASSWORD:       ${WP_DATABASE_PWD}
 
 
 ############### NETWORKS ##################
 
 networks:
   inception_network:
+    driver: bridge
+
 
 ############### VOLUMES ##################
 
