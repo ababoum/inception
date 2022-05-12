@@ -1,4 +1,4 @@
-FROM	alpine:3.15
+FROM	alpine:3.14
 
 # install nginx shell cmd and openssl
 RUN		apk update && apk upgrade && apk add --no-cache nginx openssl
