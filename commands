@@ -43,3 +43,9 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mar
   # retrieve the db IP address
 mysql -u database_username -p -h 10.24.96.6
   # connect to mariadb from the outside
+
+## SQL queries ###
+SHOW DATABASES;
+USE DATABASE;
+SHOW TABLES;
+SELECT * FROM [TABLE];
