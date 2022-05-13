@@ -25,7 +25,8 @@ RUN echo "[mysqld]" > /etc/my.cnf.d/mariadb-server.cnf && \
 		echo "bind-address = 0.0.0.0" >> /etc/my.cnf.d/mariadb-server.cnf && \
 		echo "skip-networking = false" >> /etc/my.cnf.d/mariadb-server.cnf
 
-RUN mysqld &\
+# create a database for WordPress with the user 'mababou'
+RUN mysqld & \
 		sleep 3 && \
 		echo "CREATE DATABASE $DB_NAME" | mysql && \
 		echo "CREATE USER '$DB_USER'@'$DB_CLIENT' IDENTIFIED BY '$DB_PASSWORD';" | mysql && \

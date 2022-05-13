@@ -12,20 +12,34 @@ services:
       - "443:443"
     volumes:
       - website:/var/www/html
-    # depends_on:
-    #   - wordpress
+    depends_on:
+      - wordpress
     networks:
       - inception_network
     restart: always
     
 ## Website ##
-  # wordpress:
-  #   build: requirements/wordpress/
-  #   container_name: wordpress
-  #   ports:
-  #     - "9000:9000"
-  #   networks:
-  #     - inception_network
+  wordpress:
+    container_name: wordpress
+    image: wordpress:inception
+    build: requirements/wordpress/
+    networks:
+      - inception_network
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DOMAIN_NAME=${DOMAIN_NAME}
+      - TITLE=${TITLE}
+      - WP_ADMIN_USER=${WP_ADMIN_USER}
+      - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
+      - WP_ADMIN_MAIL=${WP_ADMIN_MAIL}
+      - WP_USER=${WP_USER}
+      - WP_PASSWORD=${WP_PASSWORD}
 
 ## MySQL database ##
   mariadb:
@@ -41,13 +55,12 @@ services:
       - DB_MYSQL_PASSWORD=${DB_ROOT_PASSWORD}
       - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
     container_name: mariadb
-    expose:
-      - "3306"
+    hostname: ${DB_CLIENT}
     networks:
       - inception_network
     volumes:
       - "database:/var/lib/mysql"
-    restart: unless-stopped
+    restart: always
     env_file:
       - ./.env
     
