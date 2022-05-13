@@ -1,11 +1,13 @@
-version: '3'
+version: "3"
 
 ############### DOCKERS ##################
 services:
 
+## Server ##
   nginx:
-    build: requirements/nginx/
     container_name: nginx
+    image: nginx:inception
+    build: requirements/nginx/
     ports:
       - "443:443"
     volumes:
@@ -16,7 +18,7 @@ services:
       - inception_network
     restart: always
     
-
+## Website ##
   # wordpress:
   #   build: requirements/wordpress/
   #   container_name: wordpress
@@ -25,7 +27,10 @@ services:
   #   networks:
   #     - inception_network
 
+## MySQL database ##
   mariadb:
+    container_name: mariadb
+    image: mariadb:inception
     build:
       context: requirements/mariadb/
       args:
@@ -42,8 +47,6 @@ services:
       - inception_network
     volumes:
       - "database:/var/lib/mysql"
-    networks:
-      - inception_network
     restart: unless-stopped
     env_file:
       - ./.env
