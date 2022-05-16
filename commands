@@ -41,7 +41,7 @@ docker build -t ImageName:Tag "PATH OF THE DIRECTORY WITH THE DOCKERFILE"
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadb 
   # retrieve the db IP address
-mysql -u $DB_USER -h $DB_CLIENT -p
+mysql -u $MYSQL_USER -h $DB_CLIENT -p
   # connect to mariadb from the outside
 
 

@@ -3,6 +3,52 @@ version: "3"
 ############### DOCKERS ##################
 services:
 
+## MySQL database ##
+  mariadb:
+    container_name: mariadb
+    image: mariadb:inception
+    build:
+      context: requirements/mariadb/
+      args:
+      - DB_CLIENT=${DB_CLIENT}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - MYSQL_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    networks:
+      - network
+    volumes:
+      - "database:/var/lib/mysql"
+    restart: always
+    
+## Website ##
+  wordpress:
+    container_name: wordpress
+    image: wordpress:inception
+    build: requirements/wordpress/
+    networks:
+      - network
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      - WORDPRESS_DB_HOST=${DB_HOST}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - WORDPRESS_DB_NAME=${MYSQL_DATABASE}
+      - WORDPRESS_DB_USER=${MYSQL_USER}
+      - WORDPRESS_DB_PASSWORD=${MYSQL_PASSWORD}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
+      - DOMAIN_NAME=${DOMAIN_NAME}
+      - TITLE=${TITLE}
+      - WP_ADMIN_USER=${WP_ADMIN_USER}
+      - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
+      - WP_ADMIN_MAIL=${WP_ADMIN_MAIL}
+      - WP_USER=${WP_USER}
+      - WP_PASSWORD=${WP_PASSWORD}
+    volumes:
+      - website:/var/www/html
+
 ## Server ##
   nginx:
     container_name: nginx
@@ -15,61 +61,14 @@ services:
     depends_on:
       - wordpress
     networks:
-      - inception_network
+      - network
     restart: always
-    
-## Website ##
-  wordpress:
-    container_name: wordpress
-    image: wordpress:inception
-    build: requirements/wordpress/
-    networks:
-      - inception_network
-    restart: always
-    depends_on:
-      - mariadb
-    environment:
-      - DB_HOST=${DB_HOST}
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DOMAIN_NAME=${DOMAIN_NAME}
-      - TITLE=${TITLE}
-      - WP_ADMIN_USER=${WP_ADMIN_USER}
-      - WP_ADMIN_PASSWORD=${WP_ADMIN_PASSWORD}
-      - WP_ADMIN_MAIL=${WP_ADMIN_MAIL}
-      - WP_USER=${WP_USER}
-      - WP_PASSWORD=${WP_PASSWORD}
-
-## MySQL database ##
-  mariadb:
-    container_name: mariadb
-    image: mariadb:inception
-    build:
-      context: requirements/mariadb/
-      args:
-      - DB_CLIENT=${DB_CLIENT}
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PASSWORD=${DB_PASSWORD}
-      - DB_MYSQL_PASSWORD=${DB_ROOT_PASSWORD}
-      - DB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
-    container_name: mariadb
-    hostname: ${DB_CLIENT}
-    networks:
-      - inception_network
-    volumes:
-      - "database:/var/lib/mysql"
-    restart: always
-    env_file:
-      - ./.env
-    
 
 
 ############### NETWORKS ##################
 
 networks:
-  inception_network:
+  network:
 
 
 ############### VOLUMES ##################
@@ -78,11 +77,11 @@ volumes:
   website:
     driver_opts:
       type: none
-      device: /home/mababou/data/wp
+      device: /home/mababou/data/website
       o: bind
   database:
     driver_opts:
       type: none
-      device: /home/mababou/data/db
+      device: /home/mababou/data/database
       o: bind
    
