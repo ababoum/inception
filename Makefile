@@ -23,7 +23,7 @@ fclean: clean
 	docker volume rm -f inception_website
 	docker volume rm -f inception_database
 	docker system prune -f
-	docker image prune -f -a
+	docker image prune -f --filter 'label=inception'
 
 
 re: fclean all
