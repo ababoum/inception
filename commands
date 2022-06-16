@@ -50,3 +50,11 @@ SHOW DATABASES;
 USE DATABASE;
 SHOW TABLES;
 SELECT * FROM [TABLE];
+
+
+==== REDIS ====
+
+# Access the Redis container from a remote server using 
+# the host-name or IP and the newly defined port number:
+
+sudo redis-cli -h [host or IP] -p [port_number] -a [password]

@@ -1,4 +1,5 @@
 <?php
+ define('WP_CACHE', true);
 /**
  * La configuration de base de votre installation WordPress.
  *
@@ -19,7 +20,6 @@
  *
  * @package WordPress
  */
-
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
 define( 'DB_NAME', 'wp_inception' );
@@ -53,6 +53,7 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
+define( 'WP_CACHE_KEY_SALT','mababou.42.fr');
 define( 'AUTH_KEY',         ' U7 B*K#HlPRZM|]Vg%=w3:[1.zT|jyp**&sM.2zitsX@RUzHB3S<C=|oR2)ZYRI' );
 define( 'SECURE_AUTH_KEY',  'B~wc]}jeh#9.tTQ6R?<6H3kB+&1?p^QM&xGp[1&jEM^4gf f@Lo 2}JcLY?=MiUC' );
 define( 'LOGGED_IN_KEY',    'sTPJ.%KJ4C!<17A6YXvF%T>G4k1@?:rI<r>^G@{9Byctc;Nk[M<q-iS]xl36qVC|' );
