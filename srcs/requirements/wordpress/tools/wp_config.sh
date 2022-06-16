@@ -12,11 +12,10 @@ then
 	rm -f /var/www/html/wp-config.php
 	rm -f /var/www/html/wp-config-sample.php
 
-	wp core download --path=/var/www/html/ --locale=fr_FR
-	wp config create --dbname="$MYSQL_DATABASE" --dbuser="$MYSQL_USER" --dbpass="$DB_PASSWORD" --dbhost="$DB_HOST" --path=/var/www/html/
-	wp core install --url="$DOMAIN_NAME" --title="$TITLE" --admin_user="$WP_ADMIN_USER" --admin_password="$WP_ADMIN_PASSWORD" --admin_email="$WP_ADMIN_MAIL" --path="/var/www/html"
-	wp user create $WP_USER $WP_USER@$DOMAIN_NAME --role="author" --user_pass="$WP_PASSWORD" --path="/var/www/html"
-
+	wp core download --path=/var/www/html/ --locale=fr_FR && \
+	wp config create --path=/var/www/html/ --dbname="$MYSQL_DATABASE" --dbuser="$MYSQL_USER" --dbpass="$DB_PASSWORD" --dbhost="$DB_HOST" && \
+	wp core install --url="$DOMAIN_NAME" --title="$TITLE" --admin_user="$WP_ADMIN_USER" --admin_password="$WP_ADMIN_PASSWORD" --admin_email="$WP_ADMIN_MAIL" --path="/var/www/html" && \
+	wp user create $WP_USER $WP_USER@$DOMAIN_NAME --role="author" --user_pass="$WP_PASSWORD" --path="/var/www/html" && \
 	touch /var/www/html/.installed
 fi
 
