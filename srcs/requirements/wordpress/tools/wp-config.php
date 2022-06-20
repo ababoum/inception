@@ -1,5 +1,6 @@
 <?php
  define('WP_CACHE', true);
+ define( 'WP_MEMORY_LIMIT', '256M' );
 /**
  * La configuration de base de votre installation WordPress.
  *
@@ -53,15 +54,15 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'WP_CACHE_KEY_SALT','mababou.42.fr');
-define( 'AUTH_KEY',         ' U7 B*K#HlPRZM|]Vg%=w3:[1.zT|jyp**&sM.2zitsX@RUzHB3S<C=|oR2)ZYRI' );
-define( 'SECURE_AUTH_KEY',  'B~wc]}jeh#9.tTQ6R?<6H3kB+&1?p^QM&xGp[1&jEM^4gf f@Lo 2}JcLY?=MiUC' );
-define( 'LOGGED_IN_KEY',    'sTPJ.%KJ4C!<17A6YXvF%T>G4k1@?:rI<r>^G@{9Byctc;Nk[M<q-iS]xl36qVC|' );
-define( 'NONCE_KEY',        '42M@K]ao3TJo,]n0n1E]8x2Ts{()4$CndXee06erAZxV (h!OoGfd_5O[QH+D:jJ' );
-define( 'AUTH_SALT',        '~_9A&?T3nLxED{U-)bcqkW9<6=#`Kml+{i?nodIKcu;bh8e:Iba[ix-R6FOP#T5|' );
-define( 'SECURE_AUTH_SALT', 's6G*_sE:g~h)K~%nt>m72K#952X,<u9C }XEX6yS|~l 8>qL !AR5u)6;^_,bd1q' );
-define( 'LOGGED_IN_SALT',   ';6Ks.+Vg3|v(Tc{kQ>q} 4t:DWW;|P0m$3%aE?t3VV3<>hU/?DpUlpS/`@3@u?`T' );
-define( 'NONCE_SALT',       'TSWCcL@GZP8F2/<4XUBMr#N ..0YFXG5JVHSVes1~Dfedz=<<L 4kx3Mo#[g%v;.' );
+define( 'WP_CACHE_KEY_SALT', 'mababou.42.fr');
+define( 'AUTH_KEY',          ' U7 B*K#HlPRZM|]Vg%=w3:[1.zT|jyp**&sM.2zitsX@RUzHB3S<C=|oR2)ZYRI' );
+define( 'SECURE_AUTH_KEY',   'B~wc]}jeh#9.tTQ6R?<6H3kB+&1?p^QM&xGp[1&jEM^4gf f@Lo 2}JcLY?=MiUC' );
+define( 'LOGGED_IN_KEY',     'sTPJ.%KJ4C!<17A6YXvF%T>G4k1@?:rI<r>^G@{9Byctc;Nk[M<q-iS]xl36qVC|' );
+define( 'NONCE_KEY',         '42M@K]ao3TJo,]n0n1E]8x2Ts{()4$CndXee06erAZxV (h!OoGfd_5O[QH+D:jJ' );
+define( 'AUTH_SALT',         '~_9A&?T3nLxED{U-)bcqkW9<6=#`Kml+{i?nodIKcu;bh8e:Iba[ix-R6FOP#T5|' );
+define( 'SECURE_AUTH_SALT',  's6G*_sE:g~h)K~%nt>m72K#952X,<u9C }XEX6yS|~l 8>qL !AR5u)6;^_,bd1q' );
+define( 'LOGGED_IN_SALT',    ';6Ks.+Vg3|v(Tc{kQ>q} 4t:DWW;|P0m$3%aE?t3VV3<>hU/?DpUlpS/`@3@u?`T' );
+define( 'NONCE_SALT',        'TSWCcL@GZP8F2/<4XUBMr#N ..0YFXG5JVHSVes1~Dfedz=<<L 4kx3Mo#[g%v;.' );
 /**#@-*/
 
 /**

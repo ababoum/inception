@@ -77,6 +77,15 @@ services:
       - network
     restart: always
 
+## Static website ##
+  static-website:
+    container_name: static-website
+    image: static-website:inception
+    build: requirements/static-website/
+    ports:
+      - "1234:80"
+    restart: always
+
 ############### NETWORKS ##################
 
 networks:

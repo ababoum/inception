@@ -9,6 +9,7 @@ RUN		apk update --no-cache && \
 RUN		sed -i 's/listen = 127\.0\.0\.1:9000/listen = 9000/g' /etc/php7/php-fpm.d/www.conf
 
 COPY	tools/wp_config.sh /usr/local/bin/
+COPY	tools/wp-config.php /usr/local/bin/
 
 EXPOSE	9000
 

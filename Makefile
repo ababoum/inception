@@ -1,8 +1,17 @@
 NAME = inception
 
+SRCS = srcs/requirements/nginx/Dockerfile \
+		srcs/requirements/nginx/conf/nginx.conf \
+		srcs/requirements/mariadb/Dockerfile \
+		srcs/requirements/wordpress/Dockerfile \
+		srcs/requirements/wordpress/tools/wp-config.php \
+		srcs/requirements/wordpress/tools/wp_config.sh \
+		srcs/requirements/redis/Dockerfile \
+		srcs/requirements/redis/tools/redis.conf
+
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRCS)
 	mkdir -p "/home/mababou/data/website"
 	mkdir -p "/home/mababou/data/database"
 	docker-compose --env-file srcs/.env -f srcs/docker-compose.yml build
