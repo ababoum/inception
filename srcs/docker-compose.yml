@@ -83,8 +83,23 @@ services:
     image: static-website:inception
     build: requirements/static-website/
     ports:
-      - "1234:80"
+      - 1234:80
     restart: always
+
+## Adminer ##
+  adminer:
+    container_name: adminer
+    image: adminer:inception
+    build: requirements/adminer/
+    environment:
+      - ADMINER_DEFAULT_SERVER=mariadb
+    depends_on:
+      - mariadb
+    ports:
+      - 8080:8080
+    restart: always
+    networks:
+      - network
 
 ############### NETWORKS ##################
 
