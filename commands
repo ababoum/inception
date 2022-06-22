@@ -1,4 +1,4 @@
-==== DOCKER GENERAL ====
+<!-- ==== DOCKER GENERAL ==== -->
 
 docker images # shows images saved within docker
 docker ps # shows running dockers (flag -a for all dockers)
@@ -26,18 +26,18 @@ docker exec -it <container name> /bin/bash
     # to get a bash shell in the container
 
 
-==== DOCKER COMPOSE ====
+<!-- ==== DOCKER COMPOSE ==== -->
 
 docker-compose config # checks validity of docker-compose.yml file
 docker-compose up -d # run all dockers, in detached mode (-d)
 docker-compose down # stop all dockers
 
-==== DOCKER IMAGES ====
+<!-- ==== DOCKER IMAGES ==== -->
 
 docker build -t ImageName:Tag "PATH OF THE DIRECTORY WITH THE DOCKERFILE" 
 				# build a docker image from a docker file
 
-==== MARIADB ====
+<!-- ==== MARIADB ==== -->
 
 docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' mariadb 
   # retrieve the db IP address
@@ -52,9 +52,16 @@ SHOW TABLES;
 SELECT * FROM [TABLE];
 
 
-==== REDIS ====
+<!-- ==== REDIS ==== -->
 
 # Access the Redis container from a remote server using 
 # the host-name or IP and the newly defined port number:
 
 sudo redis-cli -h [host or IP] -p [port_number] -a [password]
+
+
+<!-- ==== FTP ==== -->
+
+ftp localhost 21
+ftp> help
+
