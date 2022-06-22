@@ -125,6 +125,20 @@ services:
       - PASV_MIN=21100
       - PASV_MAX=21110
 
+## Back-up tool / Duplicator ##
+  duplicator:
+    container_name: duplicator
+    build: requirements/duplicator/
+    image: duplicator:inception
+    networks:
+      - network
+    depends_on:
+      - mariadb
+    volumes:
+      - database:/db-data
+      - backup:/backup
+    restart: always
+
 ############### NETWORKS ##################
 
 networks:
@@ -143,5 +157,10 @@ volumes:
     driver_opts:
       type: none
       device: /home/mababou/data/database
+      o: bind
+  backup:
+    driver_opts:
+      type: none
+      device: /home/mababou/data/backup
       o: bind
    
