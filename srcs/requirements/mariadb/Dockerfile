@@ -9,12 +9,13 @@ ARG MYSQL_ROOT_PASSWORD
 RUN apk update --no-cache && \
 	apk add mariadb mariadb-client
 
-# initialize a first database with the user 'mysql'
+# initialize mariadb settings with the user 'mysql' to start installation
 RUN	sed -i "7i user=mysql\ndatadir=/var/lib/mysql/" /etc/my.cnf.d/mariadb-server.cnf && \
 	mariadb-install-db --user=mysql --datadir=/var/lib/mysql --auth-root-authentication-method=normal && \
 	mkdir -p /run/mysqld && \
 	chown -R mysql:mysql /run/mysqld
 
+# set the parameters for the user 'mysql'
 RUN echo "[mysqld]" > /etc/my.cnf.d/mariadb-server.cnf && \
 	echo "user = mysql" >> /etc/my.cnf.d/mariadb-server.cnf && \
 	echo "datadir = /var/lib/mysql/" >> /etc/my.cnf.d/mariadb-server.cnf && \

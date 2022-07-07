@@ -33,6 +33,7 @@ $(NAME): $(SRCS)
 
 linux:
 	echo "127.0.0.1 mababou.42.fr" >> /etc/hosts
+	echo "127.0.0.1 www.mababou.42.fr" >> /etc/hosts
 
 clean:
 	docker-compose --env-file srcs/.env -f srcs/docker-compose.yml stop
