@@ -19,5 +19,3 @@ then
 	wp plugin install redis-cache --activate --activate-network --path="/var/www/html"
 	touch /var/www/html/.installed
 fi
-
-exec "$@"
