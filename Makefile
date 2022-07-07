@@ -20,7 +20,6 @@ SRCS = srcs/requirements/nginx/Dockerfile \
 		srcs/requirements/static-website/page/index.html \
 		srcs/requirements/static-website/page/style.css
 
-
 all: $(NAME)
 
 $(NAME): $(SRCS)
@@ -49,7 +48,6 @@ fclean: clean
 	docker volume rm -f inception_backup
 	docker system prune -f
 	docker image prune -f --filter 'label=inception'
-
 
 re: fclean all
 

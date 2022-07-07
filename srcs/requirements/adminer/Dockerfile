@@ -1,4 +1,4 @@
-FROM	alpine:3.14
+FROM	alpine:3.15
 
 # install php tools to use the adminer.php file
 RUN apk update

@@ -23,16 +23,16 @@
  */
 // ** Réglages MySQL - Votre hébergeur doit vous fournir ces informations. ** //
 /** Nom de la base de données de WordPress. */
-define( 'DB_NAME', '${MYSQL_DATABASE}' );
+define( 'DB_NAME', 'env_MYSQL_DATABASE' );
 
 /** Utilisateur de la base de données MySQL. */
-define( 'DB_USER', '${WORDPRESS_DB_USER}' );
+define( 'DB_USER', 'env_WORDPRESS_DB_USER' );
 
 /** Mot de passe de la base de données MySQL. */
-define( 'DB_PASSWORD', '${WORDPRESS_DB_PASSWORD}' );
+define( 'DB_PASSWORD', 'env_WORDPRESS_DB_PASSWORD' );
 
 /** Adresse de l’hébergement MySQL. */
-define( 'DB_HOST', 'mariadb:3306' );
+define( 'DB_HOST', 'env_WORDPRESS_DB_HOST' );
 
 /** Jeu de caractères à utiliser par la base de données lors de la création des tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
@@ -54,7 +54,7 @@ define( 'DB_COLLATE', '' );
  *
  * @since 2.6.0
  */
-define( 'WP_CACHE_KEY_SALT', '${DOMAIN_NAME}');
+define( 'WP_CACHE_KEY_SALT', 'env_DOMAIN_NAME');
 define( 'AUTH_KEY',          ' U7 B*K#HlPRZM|]Vg%=w3:[1.zT|jyp**&sM.2zitsX@RUzHB3S<C=|oR2)ZYRI' );
 define( 'SECURE_AUTH_KEY',   'B~wc]}jeh#9.tTQ6R?<6H3kB+&1?p^QM&xGp[1&jEM^4gf f@Lo 2}JcLY?=MiUC' );
 define( 'LOGGED_IN_KEY',     'sTPJ.%KJ4C!<17A6YXvF%T>G4k1@?:rI<r>^G@{9Byctc;Nk[M<q-iS]xl36qVC|' );

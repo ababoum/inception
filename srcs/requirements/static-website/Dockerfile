@@ -1,4 +1,4 @@
-FROM	alpine:3.14
+FROM	alpine:3.15
 
 # install nginx 
 RUN		apk update && apk upgrade && apk add --no-cache apache2 

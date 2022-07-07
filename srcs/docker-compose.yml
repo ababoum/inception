@@ -26,19 +26,20 @@ services:
   wordpress:
     container_name: wordpress
     image: wordpress:inception
-    build: requirements/wordpress/
+    build:
+      context: requirements/wordpress/
+      args:
+        - WORDPRESS_DB_NAME=${MYSQL_DATABASE}
+        - WORDPRESS_DB_USER=${MYSQL_USER}
+        - WORDPRESS_DB_PASSWORD=${MYSQL_PASSWORD}
+        - WORDPRESS_DB_HOST=${DB_HOST}
+        - DOMAIN_NAME=${DOMAIN_NAME}
     networks:
       - network
     restart: always
     depends_on:
       - mariadb
     environment:
-      - WORDPRESS_DB_HOST=${DB_HOST}
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - WORDPRESS_DB_NAME=${MYSQL_DATABASE}
-      - WORDPRESS_DB_USER=${MYSQL_USER}
-      - WORDPRESS_DB_PASSWORD=${MYSQL_PASSWORD}
-      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
       - DOMAIN_NAME=${DOMAIN_NAME}
       - TITLE=${TITLE}
       - WP_ADMIN_USER=${WP_ADMIN_USER}
