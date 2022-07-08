@@ -25,7 +25,7 @@ RUN		export MYSQL_DATABASE=${MYSQL_DATABASE} && \
 RUN		sed -i "s/env_MYSQL_DATABASE/$WORDPRESS_DB_NAME/" /usr/local/bin/wp-config.php && \
 		sed -i "s/env_WORDPRESS_DB_USER/$WORDPRESS_DB_USER/" /usr/local/bin/wp-config.php && \
 		sed -i "s/env_WORDPRESS_DB_PASSWORD/$WORDPRESS_DB_PASSWORD/" /usr/local/bin/wp-config.php && \
-		sed -i "s/env_DB_HOST/$DB_HOST/" /usr/local/bin/wp-config.php && \
+		sed -i "s/env_DOMAIN_NAME/$DOMAIN_NAME/" /usr/local/bin/wp-config.php && \
 		sed -i "s/env_WORDPRESS_DB_HOST/$WORDPRESS_DB_HOST/" /usr/local/bin/wp-config.php
 
 EXPOSE	9000

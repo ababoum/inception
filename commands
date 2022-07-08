@@ -59,9 +59,16 @@ SELECT * FROM [TABLE];
 
 sudo redis-cli -h [host or IP] -p [port_number] -a [password]
 
+ping redis                       #Checks the network connection
+redis-cli -h redis ping          #Checks server response
+redis-cli -h redis info server   #View the server info
+redis-cli monitor				 #monitor activity on wordpress
+
 
 <!-- ==== FTP ==== -->
 
 ftp localhost 21
 ftp> help
+ftp> ls
+ftp> get
 

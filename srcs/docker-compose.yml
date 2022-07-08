@@ -73,13 +73,11 @@ services:
     build: requirements/redis/
     depends_on:
       - wordpress
-    environment:
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
     networks:
       - network
     restart: always
 
-## Static website ##
+## Static website [BONUS] ##
   static-website:
     container_name: static-website
     image: static-website:inception
@@ -88,7 +86,7 @@ services:
       - 1234:80
     restart: always
 
-## Adminer ##
+## Adminer [BONUS] ##
   adminer:
     container_name: adminer
     image: adminer:inception
@@ -103,7 +101,7 @@ services:
     networks:
       - network
 
-## Adminer ##
+## FTP [BONUS] ##
   ftp:
     container_name: ftp
     image: ftp:inception
@@ -127,7 +125,7 @@ services:
       - PASV_MIN=21100
       - PASV_MAX=21110
 
-## Back-up tool / Duplicator ##
+## Back-up tool / Duplicator [BONUS] ##
   duplicator:
     container_name: duplicator
     build: requirements/duplicator/

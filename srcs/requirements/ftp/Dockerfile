@@ -19,12 +19,12 @@ RUN echo "local_enable=YES" >> /etc/vsftpd/vsftpd.conf \
   && echo "pasv_enable=Yes" >> /etc/vsftpd/vsftpd.conf \
   && echo "listen_ipv6=NO" >> /etc/vsftpd/vsftpd.conf \
   && echo "seccomp_sandbox=NO" >> /etc/vsftpd/vsftpd.conf \
+  && echo "anon_mkdir_write_enable=YES" >> /etc/vsftpd/vsftpd.conf \
   && sed -i "s/anonymous_enable=YES/anonymous_enable=NO/" /etc/vsftpd/vsftpd.conf
 
 COPY tools/vsftpd.sh /usr/sbin/
 
 RUN chmod +x /usr/sbin/vsftpd.sh
-
 
 EXPOSE 20 21 21100-21110
 
