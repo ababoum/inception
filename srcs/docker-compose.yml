@@ -105,6 +105,8 @@ services:
   ftp:
     container_name: ftp
     image: ftp:inception
+    depends_on:
+      - wordpress
     build:
       context: requirements/ftp/
       args:

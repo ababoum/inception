@@ -72,3 +72,6 @@ ftp> help
 ftp> ls
 ftp> get
 
+<!-- ==== ADMINER ==== -->
+
+server->mariadb
